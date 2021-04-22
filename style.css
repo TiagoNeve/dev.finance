@@ -33,6 +33,18 @@ header h1 {
     font-weight: 100;
 }
 
+/* Links & Buttons ==================== */
+a {
+    color: #49AA26;
+    text-decoration: none;
+}
+
+.button.new {
+    display: inline-block;
+    margin-bottom: .8rem;
+}
+
+
 /* Titles ==================== */
 h2 {
     margin-top: 3.2rem;
@@ -66,6 +78,9 @@ h2 {
 .card h3 {
     font-size: 1rem;
     font-weight: normal;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .card p {
@@ -134,4 +149,17 @@ footer {
     color: var(--dark-blue);
 
     opacity: 0.6;
+}
+
+/* Tricks =================== */
+
+.sr-only {
+    position: absolute;
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    margin: -1;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+
 }
