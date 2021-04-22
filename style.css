@@ -9,6 +9,10 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 93.75%; /* 15px */
+}
+
 body {
     background: #f0f2f5;
     font-family: 'Poppins', sans-serif;
@@ -97,14 +101,22 @@ h2 {
 
 /* Table =================== */
 #data-table {
+    display: block;
     width: 100%;
     border-spacing: 0 0.5rem;
     color: #969cb3;
+
+    overflow-x: scroll;
 }
 
 thead th:first-child,
 tbody td:first-child {
     border-radius: 0.25rem 0 0 0.25rem;
+}
+
+thead th:last-child,
+tbody td:last-child {
+    border-radius: 0 .25rem .25rem 0;
 }
 
 
@@ -162,4 +174,18 @@ footer {
     overflow: hidden;
     clip: rect(0,0,0,0);
 
+}
+
+/* Responsive =================== */
+
+@media (min-width: 800px) {
+    html {
+        font-size: 87.5%; /* 14px */
+    }
+
+    #balance {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2rem;
+    }
 }
