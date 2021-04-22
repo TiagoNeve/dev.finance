@@ -40,6 +40,10 @@ header h1 {
     font-weight: 100;
 }
 
+header a img {
+    margin-bottom: 2rem;
+}
+
 /* Links & Buttons ==================== */
 a {
     color: var(--green);
@@ -69,6 +73,7 @@ button:hover {
 .button.new {
     display: inline-block;
     margin-bottom: .8rem;
+    margin-top: 1.6rem;
 }
 
 .button.cancel {
@@ -214,6 +219,8 @@ td.expense {
 
     opacity: 0;
     visibility: hidden;
+
+    z-index: 999;
 }
 
 .modal-overlay.active {
@@ -225,6 +232,9 @@ td.expense {
     background-color: #f0f2f5;
 
     padding: 2.7rem;
+
+    position: relative;
+    z-index: 1;
 }
 
 /* Form =================== */
