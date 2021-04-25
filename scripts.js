@@ -11,39 +11,39 @@ const Modal = {
     }
 };
 
-const transactions = [
-    {
-        id: 1,
-        description: "Luz",
-        amount: -50000,
-        date: "23/01/2021"
-    },
-    {
-        id: 2,
-        description: "Criação website",
-        amount: 500000,
-        date: "23/01/2021"
-    },
-    {
-        id: 3,
-        description: "Internet",
-        amount: -20000,
-        date: "23/01/2021"
-    },
-    {
-        id: 4,
-        description: "App",
-        amount: 200000,
-        date: "23/01/2021"
-    },
-
-]
-
 const Transaction = {
-    all: transactions,
+    all: [
+        {
+            description: "Luz",
+            amount: -50000,
+            date: "23/01/2021"
+        },
+        {
+            description: "Criação website",
+            amount: 500000,
+            date: "23/01/2021"
+        },
+        {
+            description: "Internet",
+            amount: -20000,
+            date: "23/01/2021"
+        },
+        {
+            description: "App",
+            amount: 200000,
+            date: "23/01/2021"
+        },
+
+    ],
 
     add(transaction) {
         Transaction.all.push(transaction)
+
+        App.reload();
+    },
+
+    remove(index) {
+        Transaction.all.splice(index, 1)
 
         App.reload();
     },
@@ -89,14 +89,11 @@ const Utils = {
             currency: "BRL"
         })
 
-        console.log(value)
-
         return `${signal} ${value}`
 
     }
 
 }
-
 
 const DOM = {
     transactionContainer: document.querySelector('#data-table tbody'),
@@ -150,6 +147,51 @@ const DOM = {
 
 }
 
+const Form = {
+
+    description: document.querySelector("input#description"),
+    amount: document.querySelector("input#amount"),
+    date: document.querySelector("input#date"),
+
+    getValues() {
+        return {
+            description: Form.description.value,
+            amount: Form.amount.value,
+            date: Form.date.value,
+        }
+    },
+
+    validateFildes() {
+        const { description, amount, date } = Form.getValues();
+
+        if (description.trim() === "" ||
+            amount.trim() === "" ||
+            date.trim() === ""
+        ) {
+            throw new Error("Por favor, preencha todos os campos!")
+        }
+    },
+
+    formatData() {
+
+    },
+
+    submit(event) {
+        event.preventDefault();
+
+        try {
+
+            Form.validateFildes();
+
+            Form.formatData();
+
+        } catch (error) {
+            alert(error.message)
+        }
+
+    },
+}
+
 const App = {
 
     init() {
@@ -173,9 +215,3 @@ const App = {
 
 App.init();
 
-Transaction.add({
-    id: 42,
-    description: 'Eae',
-    amount: 2000,
-    date: '27/07/2021'
-})
